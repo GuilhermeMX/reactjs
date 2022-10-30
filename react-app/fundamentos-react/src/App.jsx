@@ -16,12 +16,12 @@ export function App() {
 
         <main>
           <Post
-            author="Guilherme Xavier"
-            content="O brabo da cultura e tudo mais"
+            author="Chat 1 Guilherme Xavier "
+            content="A expressão Lorem ipsum em design gráfico e editoração é um texto padrão em latim utilizado na produção gráfica para preencher os espaços de texto em publicações para testar e ajustar aspectos visuais antes de utilizar conteúdo real."
           />
           <Post
-            author="Guilherme Xavier"
-            content="O brabo da cultura e tudo mais"
+            author="Chat 2 Guilherme Xavier"
+            content="A expressão Lorem ipsum em design gráfico e editoração é um texto padrão em latim utilizado na produção gráfica para preencher os espaços de texto em publicações para testar e ajustar aspectos visuais antes de utilizar conteúdo real."
           />
         </main>
       </div>
