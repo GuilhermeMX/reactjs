@@ -1,0 +1,28 @@
+.comment {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.comment > img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 8px;
+  outline: 1px solid var(--green-500);
+}
+
+.commentBox {
+  flex: 1;
+}
+
+.commentContent {
+  background-color: var(--gray-700);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.commentContent header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
