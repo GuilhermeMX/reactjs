@@ -3,29 +3,32 @@ import { Comment } from "./Comment";
 
 import styles from "./Post.module.css";
 
-export function Post() {
+export function Post({ author, publishedAt }) {
+  // Fixing the date format 
+  const publishedDateFormatted = new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: 'long',
+    timeStyle: 'full'
+  }) 
+  
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src="https://github.com/GuilhermeMX.png" />
+          <Avatar src={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>Guilherme M. Xavier</strong>
-            <span>Software Developer</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
-        <time title="21 de novembro as 11:02" dateTime="2022-11-21 11:03:30">Publicado há 1h</time>
+        <time title="21 de novembro as 11:02" dateTime="2022-11-21 11:03:30">
+          Publicado há 1h
+        </time>
       </header>
 
       <div className={styles.content}>
-        <p>Fala galera!!</p>
-        <p>Acabei de subir mais um projeto no meu portifólio</p>
-        <p><a href="https://github.com/GuilhermeMX/">https://github.com/GuilhermeMX/</a></p>
-        <p>
-          <a href="#">#nlw </a>
-          <a href="#">#rocketseat</a>
-        </p>
+
       </div>
 
       <form className={styles.commentForm}>
