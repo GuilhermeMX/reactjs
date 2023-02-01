@@ -1,15 +1,21 @@
+import { format, formatDistanceToNow } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 
 import styles from "./Post.module.css";
 
-export function Post({ author, publishedAt }) {
+export function Post({ author, publishedAt, content }) {
   // Fixing the date format 
-  const publishedDateFormatted = new Intl.DateTimeFormat('pt-BR', {
-    day: '2-digit',
-    month: 'long',
-    timeStyle: 'full'
-  }) 
+  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'ás' HH:mm'h'", {
+    locale: ptBR,
+  })
+
+  const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBR,
+    addSuffix: true,
+  });
   
   return (
     <article className={styles.post}>
@@ -22,13 +28,19 @@ export function Post({ author, publishedAt }) {
           </div>
         </div>
 
-        <time title="21 de novembro as 11:02" dateTime="2022-11-21 11:03:30">
-          Publicado há 1h
+        <time title={publishedDateFormatted} dateTime={publishedAt.toISOString()}>
+          {publishedDateRelativeToNow}
         </time>
       </header>
 
       <div className={styles.content}>
-
+        {content.map(line => {
+          if (line.type === 'paragraph') {
+            return  <p>{line.content}</p>
+          } else if (line.type === 'link') {
+            return <p> <a href="#"> {line.content} </a> </p>
+          }
+        })}
       </div>
 
       <form className={styles.commentForm}>
