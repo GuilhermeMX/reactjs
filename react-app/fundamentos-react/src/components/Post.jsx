@@ -1,7 +1,7 @@
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
-import { useState } from 'react';
 
+import { useState } from 'react';
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 
@@ -11,6 +11,8 @@ export function Post({ author, publishedAt, content }) {
   const [comments, setComments] = useState([
     'Post muito bacana!'
   ]);
+
+  const [newCommentText, setNewCommentText] = useState('');
   
   // Fixing the date format 
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'ás' HH:mm'h'", {
@@ -24,12 +26,14 @@ export function Post({ author, publishedAt, content }) {
 
   function handleCreateNewComment() {
     event.preventDefault()
-
-    const newCommentText = event.target.comment.value;
     
     setComments([...comments, newCommentText]);
-
+    setNewCommentText('');
   };
+
+  function handleNewCommentChange() {
+    setNewCommentText(event.target.value) 
+  }
   
   return (
     <article className={styles.post}>
@@ -63,6 +67,8 @@ export function Post({ author, publishedAt, content }) {
         <textarea
           name="comment"
           placeholder="Deixe um comentário"
+          value={newCommentText}
+          onChange={handleNewCommentChange}
         />  
 
         <button type="submit">Comentar</button>
