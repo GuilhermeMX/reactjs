@@ -3,9 +3,9 @@ import { Avatar } from './Avatar';
 
 import styles from './Comment.module.css';
 
-export function Comment({ content, deleteComment }) {
+export function Comment({ content, onDeleteComment }) {
   function handleDeleteComment() {
-    deleteComment(content);
+    onDeleteComment(content);
   }
   
   return (
