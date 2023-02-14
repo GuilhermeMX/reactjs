@@ -47,6 +47,8 @@ export function Post({ author, publishedAt, content }) {
     
     setComments(commentsAfterDelete);
   }
+
+  const isNewCommentEmpty = newCommentText.length === 0;
   
   return (
     <article className={styles.post}>
@@ -86,7 +88,9 @@ export function Post({ author, publishedAt, content }) {
           required
         />  
 
-        <button type="submit">Comentar</button>
+        <button type="submit" disabled={isNewCommentEmpty}>
+          Publicar
+        </button>
       </form>
 
       <div className={styles.commentList}>
