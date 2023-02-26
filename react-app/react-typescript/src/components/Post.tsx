@@ -1,17 +1,25 @@
 import { format, formatDistanceToNow } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Avatar } from "./Avatar";
 import { Comment } from "./Comment";
 
 import styles from "./Post.module.css";
 
-interface PostProps {
-
+interface Author {
+  name: string;
+  role: string;
+  avatarUrl: string;
 }
 
-export function Post({ author, publishedAt, content }) {
+interface PostProps {
+  author: Author;
+  publishedAt: Date;
+  content: string;
+}
+
+export function Post({ author, publishedAt, content }: PostProps) {
   const [comments, setComments] = useState([
     'Post muito bacana!'
   ]);
@@ -28,7 +36,7 @@ export function Post({ author, publishedAt, content }) {
     addSuffix: true,
   });
 
-  function handleCreateNewComment() {
+  function handleCreateNewComment(event: FormEvent) {
     event.preventDefault()
     
     setComments([...comments, newCommentText]);
