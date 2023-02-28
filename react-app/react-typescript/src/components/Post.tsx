@@ -13,10 +13,15 @@ interface Author {
   avatarUrl: string;
 }
 
+interface Content {
+  type: 'paragraph' | 'link'; 
+  content: string
+}
+
 interface PostProps {
   author: Author;
   publishedAt: Date;
-  content: string;
+  content: Content[];
 }
 
 export function Post({ author, publishedAt, content }: PostProps) {
@@ -52,7 +57,7 @@ export function Post({ author, publishedAt, content }: PostProps) {
     event.target.setCustomValidity('Esse campo é obrigatório!');
   }
 
-  function deleteComment(commentToDelete) {
+  function deleteComment(commentToDelete: string) {
     const commentsAfterDelete = comments.filter(comment => {
       return comment != commentToDelete;
     })
