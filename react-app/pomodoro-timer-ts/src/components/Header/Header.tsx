@@ -2,8 +2,8 @@ import { HeaderContainer } from './styles'
 
 import { Timer, Scroll } from 'phosphor-react'
 
-import logo-coriana.png from '../../assets/logo-acoriana.png'
-  
+import logo-acoriana.png from '../../assets/logo-acoriana.png'
+
 export function Header() {
   return (
     <HeaderContainer>
