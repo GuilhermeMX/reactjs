@@ -1,16 +1,16 @@
-import { HeaderContainer } from './styles';
+import { HeaderContainer } from './styles'
 
-import { Timer, Scroll } from 'phosphor-react';
-import { NavLink } from 'react-router-dom';
+import { Timer, Scroll } from 'phosphor-react'
+import { NavLink } from 'react-router-dom'
 
-import logo.png from '../../assets/logo.png';
+import logo from '../../assets/logo.png'
 
 export function Header() {
   return (
     <HeaderContainer>
       <img src="logoAcoriana" alt="Logo Açoriana-produtora" />
       <nav>
-        <NavLink to="/" title='timer'>
+        <NavLink to="/" title="timer">
           <Timer size={24} />
         </NavLink>
         <NavLink to="/history" title="histórico">
